@@ -5,7 +5,7 @@ void ofApp::setup()
 {	
 	
 	vector<string> files;
-	auto buffer = ofBufferFrome("t.txt");
+	auto buffer = ofBufferFrame("t.txt");
 	for(auto line:buffer.getLines()){
 		files.push_back(line);
 	}
