@@ -3,47 +3,41 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {	
-	ofDirectory currentVideoDirectory(ofToDataPath("../../../video", true));
-	if (currentVideoDirectory.exists()) 
+	
+	vector<string> files;
+	auto buffer = ofBufferFrome("t.txt");
+	for(auto line:buffer.getLines()){
+		files.push_back(line);
+	}
+	
+	for (int i=0; i<files.size(); i++) 
 	{
-		currentVideoDirectory.listDir();
-		vector<ofFile> files = currentVideoDirectory.getFiles();
-		
-		
-		for (int i=0; i<files.size(); i++) 
+		ofxOMXPlayerSettings settings;
+		settings.videoPath = files[i];
+		settings.useHDMIForAudio = true;	//default true
+		settings.enableLooping = false;		//default true
+		settings.enableAudio = false;		//default true, save resources by disabling
+		settings.enableTexture = false;		//default true
+		if (!settings.enableTexture)
 		{
-			ofxOMXPlayerSettings settings;
-			settings.videoPath = files[i].path();
-			settings.useHDMIForAudio = true;	//default true
-			settings.enableLooping = true;		//default true
-			settings.enableAudio = true;		//default true, save resources by disabling
-			settings.enableTexture = false;		//default true
-			if (!settings.enableTexture) 
-			{
-				/*
-				 We have the option to pass in a rectangle
-				 to be used for a non-textured player to use (as opposed to the default full screen)
-				 */
-                
-                settings.directDisplayOptions.drawRectangle.x = 40+(400*i);
-                settings.directDisplayOptions.drawRectangle.y = 200;
-                
-				settings.directDisplayOptions.drawRectangle.width = 400;
-				settings.directDisplayOptions.drawRectangle.height = 300;
-				
-				
-			}
+			/*
+				We have the option to pass in a rectangle
+				to be used for a non-textured player to use (as opposed to the default full screen)
+				*/
 			
-			ofxOMXPlayer* player = new ofxOMXPlayer();
-			player->setup(settings);
-			omxPlayers[i] = player;
+			settings.directDisplayOptions.drawRectangle.x = 40+(400*i);
+			settings.directDisplayOptions.drawRectangle.y = 200;
+			
+			settings.directDisplayOptions.drawRectangle.width = 640;
+			settings.directDisplayOptions.drawRectangle.height = 480;
+			
+			
 		}
-    }else{
-        ofLogError() << "currentVideoDirectory: " << currentVideoDirectory.path() << " MISSING";
-        
-        
-    }
-
+		
+		ofxOMXPlayer* player = new ofxOMXPlayer();
+		player->setup(settings);
+		omxPlayers[i] = player;
+	}
 }
 
 //--------------------------------------------------------------

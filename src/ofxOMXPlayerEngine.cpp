@@ -1,5 +1,6 @@
 #include "ofxOMXPlayerEngine.h"
-
+#include <time.h>
+#include <stdio.h>
 
 ofxOMXPlayerEngine::ofxOMXPlayerEngine()
 {
@@ -273,12 +274,17 @@ void ofxOMXPlayerEngine::process()
         
         if(!packet)
         {
+            time_t t = time(NULL);
+            printf("Debug:: %s 1. Reading Packet\n", ctime(&t));
             packet = omxReader.Read();
             if (packet && doLooping && packet->pts != DVD_NOPTS_VALUE)
             {
                 packet->pts += loop_offset;
                 packet->dts += loop_offset;
             }
+        }else{
+            time_t t = time(NULL);
+            printf("Debug:: %s 2. Not Reading Packet\n", ctime(&t));
         }
         
         bool isCacheEmpty = false;

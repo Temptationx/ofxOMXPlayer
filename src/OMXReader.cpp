@@ -430,6 +430,9 @@ OMXPacket* OMXReader::Read()
     pkt.stream_index = MAX_OMX_STREAMS;
     
     result = av_read_frame(avFormatContext, &pkt);
+    time_t t = time(NULL);
+    printf("Debug:: %s 3. Reading Packet Done, result %d\n", ctime(&t), result);
+
     if (result < 0)
     {
         isEOF = true;
