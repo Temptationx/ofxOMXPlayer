@@ -8,16 +8,18 @@ void ofApp::setup()
 	auto buffer = ofBufferFromFile("t.txt");
 	for(auto line:buffer.getLines()){
 		files.push_back(line);
+		printf("afafafafafafafafafa\n");
 	}
+files.push_back("fff");
 	
 	for (int i=0; i<files.size(); i++) 
 	{
 		ofxOMXPlayerSettings settings;
-		settings.videoPath = files[i];
+		settings.videoPath = "rtsp://192.168.1.74:554/stream2";
 		settings.useHDMIForAudio = true;	//default true
 		settings.enableLooping = false;		//default true
 		settings.enableAudio = false;		//default true, save resources by disabling
-		settings.enableTexture = false;		//default true
+		settings.enableTexture =false;		//default true
 		if (!settings.enableTexture)
 		{
 			/*
@@ -25,7 +27,7 @@ void ofApp::setup()
 				to be used for a non-textured player to use (as opposed to the default full screen)
 				*/
 			
-			settings.directDisplayOptions.drawRectangle.x = 40+(400*i);
+			settings.directDisplayOptions.drawRectangle.x = 40+(640*i);
 			settings.directDisplayOptions.drawRectangle.y = 200;
 			
 			settings.directDisplayOptions.drawRectangle.width = 640;
@@ -62,6 +64,8 @@ void ofApp::draw(){
 				ofDrawBitmapStringHighlight(player->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
 			ofPopMatrix();
 		}		
+		if(player->isPlaying()&&false)
+			player->draw(0,0,640,480);
 	}
 	stringstream fpsInfo;
 	fpsInfo <<"\n" <<  "APP FPS: "+ ofToString(ofGetFrameRate());
