@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxOMXPlayer.h"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp, public ofxOMXPlayerListener{
 
 	public:
 
@@ -11,7 +11,8 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 		void keyPressed(int key);
-	
+	    virtual void onVideoEnd(ofxOMXPlayerListenerEventData& e);
+        virtual void onVideoLoop(ofxOMXPlayerListenerEventData& e);
 	
 	map<int, ofxOMXPlayer*> omxPlayers; 
 

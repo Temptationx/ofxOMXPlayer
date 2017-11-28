@@ -10,7 +10,9 @@ void ofApp::setup()
 		files.push_back(line);
 		printf("afafafafafafafafafa\n");
 	}
-files.push_back("fff");
+
+	files.push_back("rtsp://192.168.1.74:554/stream2");
+
 	
 	for (int i=0; i<files.size(); i++) 
 	{
@@ -49,7 +51,12 @@ void ofApp::update()
 	
 	
 }
+void ofApp::onVideoEnd(ofxOMXPlayerListenerEventData& e){
 
+}
+void ofApp::onVideoLoop(ofxOMXPlayerListenerEventData& e){
+
+}
 
 //--------------------------------------------------------------
 void ofApp::draw(){
@@ -57,7 +64,7 @@ void ofApp::draw(){
 	for (int i=0; i<omxPlayers.size(); i++) 
 	{
 		ofxOMXPlayer* player = omxPlayers[i];
-		if (player->isPlaying()) 
+		if (player->isPlaying())
 		{
 			ofPushMatrix();
 				ofTranslate(player->drawRectangle->x, 0, 0);
