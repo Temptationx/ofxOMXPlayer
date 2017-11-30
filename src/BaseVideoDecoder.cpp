@@ -177,6 +177,7 @@ bool BaseVideoDecoder::decode(uint8_t* demuxer_content, int iSize, double pts)
             OMX_BUFFERHEADERTYPE *omxBuffer = decoderComponent.getInputBuffer(500);
             if(omxBuffer == NULL)
             {
+		Reset();
                 ofLogError(__func__) << "Decode timeout";
                 return false;
             }

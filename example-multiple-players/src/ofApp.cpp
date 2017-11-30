@@ -10,7 +10,7 @@ void ofApp::setup()
 		files.push_back(line);
 		printf("afafafafafafafafafa\n");
 	}
-files.push_back("fff");
+//files.push_back("fff");
 	
 	for (int i=0; i<files.size(); i++) 
 	{
