@@ -55,15 +55,15 @@ void loadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings setting){
 	player->setup(setting);
 }
 void ofApp::onVideoEnd(ofxOMXPlayerListenerEventData& e){
-	auto engine = (ofxOMXPlayerEngine)e.listener;
+	auto engine = (ofxOMXPlayerEngine*)e.listener;
 	for(int i=0;i<omxPlayers.size();i++){
-		if(omxPlayers[i].engine == engine){
+		if(omxPlayers[i]->engine == engine){
 			auto setting = omxPlayers[i]->settings;
-			delete player;
+			delete omxPlayers[i];
 			auto newPlayer = new ofxOMXPlayer();
 			omxPlayers[i] = newPlayer;
 			thread loadNewMovie(loadMovie, newPlayer, setting);
-			thread.detach();
+			loadNewMovie.detach();
 		}
 	}
 }
