@@ -3,21 +3,34 @@
 #include <chrono>
 #include "Poco/FileStream.h"
 //--------------------------------------------------------------
+void loadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings setting){
+	if(!player){
+		return;
+	}
+	while(true){
+			printf("LoadMovie sleep\n");
+	
+		this_thread::sleep_for(chrono::seconds(2));
+			printf("LoadMovie wake up\n");
+		if(!player->setup(setting)){
+			printf("LoadMovie fail\n");
+		}else{
+			printf("LoadMovie success\n");
+			break;
+		}
+	}
+}
 void ofApp::setup()
 {	
-	
     Poco::FileInputStream stream(string("t.txt"));
-        std::string line;
-        vector<string> files;
-        while (std::getline(stream, line)) { 	files.push_back(line);	}
-        for(auto l : files){
-            cout<<l<<endl;
-        }
+	std::string line;
+	vector<string> files;
+	while (std::getline(stream, line)) { 	files.push_back(line);	}
 	
 	for (int i=0; i<files.size(); i++) 
 	{
 		ofxOMXPlayerSettings settings;
-                settings.videoPath = "rtsp://192.168.0.101:554/stream";
+        settings.videoPath = files[i];
 		settings.useHDMIForAudio = true;	//default true
 		settings.enableLooping = false;		//default true
 		settings.enableAudio = false;		//default true, save resources by disabling
@@ -34,14 +47,13 @@ void ofApp::setup()
 			settings.directDisplayOptions.drawRectangle.y = 200;
 			
 			settings.directDisplayOptions.drawRectangle.width = 640;
-			settings.directDisplayOptions.drawRectangle.height = 480;
-			
-			
+			settings.directDisplayOptions.drawRectangle.height = 480;	
 		}
 		
 		ofxOMXPlayer* player = new ofxOMXPlayer();
-		if(player->setup(settings)){
-
+		if(!player->setup(settings)){
+			thread loadNewMovie(loadMovie, player, settings);
+			loadNewMovie.detach();
 		}
 		omxPlayers[i] = player;
 	}
@@ -54,19 +66,7 @@ void ofApp::update()
 	
 	
 }
-void loadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings setting){
-	if(!player){
-		return;
-	}
-	printf("LoadMovie sleep\n");
-	this_thread::sleep_for(chrono::seconds(12));
-	printf("LoadMovie wake up\n");
-	if(!player->setup(setting)){
-		printf("LoadMovie fail\n");
-	}else{
-		printf("LoadMovie success\n");
-	}
-}
+
 void ofApp::onVideoEnd(ofxOMXPlayerListenerEventData& e){
 	printf("!!!Video End\n");
 	auto engine = (ofxOMXPlayerEngine*)e.listener;
