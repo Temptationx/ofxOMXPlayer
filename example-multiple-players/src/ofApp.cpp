@@ -8,14 +8,13 @@ void ofApp::setup()
 	auto buffer = ofBufferFromFile("t.txt");
 	for(auto line:buffer.getLines()){
 		files.push_back(line);
-		printf("afafafafafafafafafa\n");
+		cout<<"Read URL from t.txt:"<<line<<endl;
 	}
-//files.push_back("fff");
 	
 	for (int i=0; i<files.size(); i++) 
 	{
 		ofxOMXPlayerSettings settings;
-		settings.videoPath = "rtsp://192.168.1.74:554/stream2";
+		settings.videoPath = files[i];
 		settings.useHDMIForAudio = true;	//default true
 		settings.enableLooping = false;		//default true
 		settings.enableAudio = false;		//default true, save resources by disabling
@@ -49,7 +48,12 @@ void ofApp::update()
 	
 	
 }
+void ofApp::onVideoEnd(ofxOMXPlayerListenerEventData& e){
 
+}
+void ofApp::onVideoLoop(ofxOMXPlayerListenerEventData& e){
+
+}
 
 //--------------------------------------------------------------
 void ofApp::draw(){
@@ -57,7 +61,7 @@ void ofApp::draw(){
 	for (int i=0; i<omxPlayers.size(); i++) 
 	{
 		ofxOMXPlayer* player = omxPlayers[i];
-		if (player->isPlaying()) 
+		if (player->isPlaying())
 		{
 			ofPushMatrix();
 				ofTranslate(player->drawRectangle->x, 0, 0);
