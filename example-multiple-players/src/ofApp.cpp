@@ -57,7 +57,7 @@ void loadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings setting){
 		return;
 	}
 	printf("LoadMovie sleep\n");
-	this_thread::sleep_for(chrono::seconds(2));
+	this_thread::sleep_for(chrono::seconds(12));
 	printf("LoadMovie wake up\n");
 	if(!player->setup(setting)){
 		printf("LoadMovie fail\n");
