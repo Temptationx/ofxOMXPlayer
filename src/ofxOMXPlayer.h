@@ -92,7 +92,7 @@ public:
     bool isLoopingEnabled();
 
     ofxOMXPlayerEngine* engine;
-    
+    ofxOMXPlayerSettings    settings;
 private:
     vector<int> signals;
     bool openEngine(int startTimeInSeconds = 0);
@@ -139,6 +139,5 @@ private:
     StreamInfo videoInfo;
     
     OMX_HANDLETYPE decoderHandle;
-    ofxOMXPlayerSettings    settings;
 };
 
