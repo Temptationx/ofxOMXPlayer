@@ -1,16 +1,18 @@
 #include "ofApp.h"
 #include <thread>
 #include <chrono>
+#include "Poco/FileStream.h"
 //--------------------------------------------------------------
 void ofApp::setup()
 {	
 	
-	vector<string> files;
-	auto buffer = ofBufferFromFile("t.txt");
-	for(auto line:buffer.getLines()){
-		files.push_back(line);
-		cout<<"Read URL from t.txt:"<<line<<endl;
-	}
+    Poco::FileInputStream stream(string("t.txt"));
+        std::string line;
+        vector<string> files;
+        while (std::getline(stream, line)) { 	files.push_back(line);	}
+        for(auto l : files){
+            cout<<l<<endl;
+        }
 	
 	for (int i=0; i<files.size(); i++) 
 	{
