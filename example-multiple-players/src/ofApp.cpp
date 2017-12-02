@@ -14,7 +14,7 @@ void ofApp::setup()
 	for (int i=0; i<files.size(); i++) 
 	{
 		ofxOMXPlayerSettings settings;
-		settings.videoPath = files[i];
+                settings.videoPath = "rtsp://192.168.0.101:554/stream";
 		settings.useHDMIForAudio = true;	//default true
 		settings.enableLooping = false;		//default true
 		settings.enableAudio = false;		//default true, save resources by disabling
