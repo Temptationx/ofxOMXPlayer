@@ -20,6 +20,7 @@ void ofApp::setup()
 		settings.enableLooping = false;		//default true
 		settings.enableAudio = false;		//default true, save resources by disabling
 		settings.enableTexture =false;		//default true
+		settings.listener = this;
 		if (!settings.enableTexture)
 		{
 			/*
