@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include <thread>
+#include <chrono>
 //--------------------------------------------------------------
 void ofApp::setup()
 {	
@@ -54,11 +55,17 @@ void loadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings setting){
 	if(!player){
 		return;
 	}
+	printf("LoadMovie sleep\n");
+	this_thread::sleep_for(chrono::seconds(2));
+	printf("LoadMovie wake up\n");
 	if(!player->setup(setting)){
-		
+		printf("LoadMovie fail\n");
+	}else{
+		printf("LoadMovie success\n");
 	}
 }
 void ofApp::onVideoEnd(ofxOMXPlayerListenerEventData& e){
+	printf("!!!Video End\n");
 	auto engine = (ofxOMXPlayerEngine*)e.listener;
 	for(int i=0;i<omxPlayers.size();i++){
 		if(omxPlayers[i]->engine == engine){
