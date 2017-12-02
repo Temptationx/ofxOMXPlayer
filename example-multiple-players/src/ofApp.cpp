@@ -36,7 +36,9 @@ void ofApp::setup()
 		}
 		
 		ofxOMXPlayer* player = new ofxOMXPlayer();
-		player->setup(settings);
+		if(player->setup(settings)){
+
+		}
 		omxPlayers[i] = player;
 	}
 }
@@ -52,7 +54,9 @@ void loadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings setting){
 	if(!player){
 		return;
 	}
-	player->setup(setting);
+	if(!player->setup(setting)){
+		
+	}
 }
 void ofApp::onVideoEnd(ofxOMXPlayerListenerEventData& e){
 	auto engine = (ofxOMXPlayerEngine*)e.listener;
