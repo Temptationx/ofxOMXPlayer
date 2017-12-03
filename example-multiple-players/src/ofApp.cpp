@@ -43,8 +43,8 @@ void ofApp::setup()
 				to be used for a non-textured player to use (as opposed to the default full screen)
 				*/
 			
-			settings.directDisplayOptions.drawRectangle.x = 40+(640*i);
-			settings.directDisplayOptions.drawRectangle.y = 200;
+			settings.directDisplayOptions.drawRectangle.x = 40+(640*i %3);
+			settings.directDisplayOptions.drawRectangle.y = 200 + 480 * (i/3);
 			
 			settings.directDisplayOptions.drawRectangle.width = 640;
 			settings.directDisplayOptions.drawRectangle.height = 480;	
