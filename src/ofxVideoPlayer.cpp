@@ -60,7 +60,7 @@ void ofxVideoPlayer::setSource(std::string _source)
 void ofxVideoPlayer::play()
 {
     ofxOMXPlayerSettings settings;
-    settings.videoPath = files[i];
+    settings.videoPath = source;
     settings.useHDMIForAudio = true;	//default true
     settings.enableLooping = false;		//default true
     settings.enableAudio = false;		//default true, save resources by disabling
@@ -80,6 +80,6 @@ void ofxVideoPlayer::play()
         settings.directDisplayOptions.drawRectangle.height = height;
     }
     if(!d->omxPlayer->setup(settings)){
-        d->onVideoEnd(ofxOMXPlayerListenerEventData());
+        d->onVideoEnd(ofxOMXPlayerListenerEventData(nullptr));
     }
 }
