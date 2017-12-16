@@ -102,6 +102,7 @@ public:
         return doLooping;
     }
     bool doRestart;
+    ofxOMXPlayerListener *getListener();
 private:
     
     

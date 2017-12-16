@@ -695,7 +695,10 @@ void ofxOMXPlayerEngine::removeListener()
     listener = NULL;
 }
 
-
+ofxOMXPlayerListener * ofxOMXPlayerEngine::getListener()
+{
+    return listener;
+}
 
 void ofxOMXPlayerEngine::onVideoLoop()
 {

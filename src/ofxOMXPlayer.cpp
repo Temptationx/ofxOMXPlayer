@@ -964,4 +964,3 @@ void ofxOMXPlayer::addExitHandler()
     }
     ofAddListener(ofEvents().update, this, &ofxOMXPlayer::onUpdateDuringExit);
 }
-

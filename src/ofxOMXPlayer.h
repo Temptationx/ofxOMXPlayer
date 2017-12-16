@@ -12,6 +12,7 @@ public:
     ofxOMXPlayer();
     ~ofxOMXPlayer();
     bool setup(ofxOMXPlayerSettings settings);
+    void setupAsync(ofxOMXPlayerSettings settings);
     ofxOMXPlayerSettings getSettings();
     void        toggleMode();
     void        loadMovie(string videoPath);
@@ -92,7 +93,7 @@ public:
     bool isLoopingEnabled();
 
     ofxOMXPlayerEngine* engine;
-    ofxOMXPlayerSettings    settings;
+    
 private:
     vector<int> signals;
     bool openEngine(int startTimeInSeconds = 0);
@@ -104,8 +105,6 @@ private:
     
     static bool doExit;
     static void signal_handler(int signum);
-    
-    
  
     EGLImageKHR     eglImage;
     GLuint          textureID;
@@ -115,7 +114,7 @@ private:
     int             videoWidth;
     int             videoHeight;
     
-    
+    ofxOMXPlayerSettings    settings;
     bool            hasNewFrame;
     int             prevFrame;
     
