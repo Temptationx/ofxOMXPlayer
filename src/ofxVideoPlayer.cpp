@@ -57,6 +57,23 @@ void ofxVideoPlayer::setSource(std::string _source)
     source = _source;
 }
 
+void ofxVideoPlayer::drawInfoText()
+{
+    	// 	if (player->isPlaying())
+	// 	{
+	// 		ofPushMatrix();
+	// 			ofTranslate(player->drawRectangle->x, 0, 0);
+	// 			ofDrawBitmapStringHighlight(player->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
+	// 		ofPopMatrix();
+    // 	}		
+    if(d->omxPlayer->isPlaying()){
+        ofPushMatrix();
+        ofTranslate(d->omxPlayer->drawRectangle->x, 0, 0);
+        ofDrawBitmapStringHighlight(d->omxPlayer->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
+        ofPopMatrix();
+    }
+}
+
 void ofxVideoPlayer::play()
 {
     ofxOMXPlayerSettings settings;

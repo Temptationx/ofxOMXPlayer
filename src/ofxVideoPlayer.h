@@ -11,6 +11,7 @@ public:
     void setSize(int w, int h);
     void setSource(std::string _source);
     void play();
+    void drawInfoText();
 private:
     ofxVideoPlayerPrivate *d = nullptr;
     friend ofxVideoPlayerPrivate;

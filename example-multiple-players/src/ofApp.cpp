@@ -15,8 +15,8 @@ void ofApp::setup()
 	{
         auto videoPath = files[i];
 
-		auto x = 40+(640*(i %3));
-		auto y = 200 + 480 * (i/3);
+		auto x = 40 + (640 * (i % 3));
+		auto y = 40 + 480 * (i / 3);
 		
 		auto width = 640;
 		auto height = 480;	
@@ -43,8 +43,10 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw(){
 	// ofBackgroundGradient(ofColor::red, ofColor::black, OF_GRADIENT_BAR);
-	// for (int i=0; i<omxPlayers.size(); i++) 
-	// {
+	 for (int i=0; i<omxPlayers.size(); i++) 
+	 {
+		 auto player = omxPlayers[i];
+		 player->drawInfoText();
 	// 	ofxOMXPlayer* player = omxPlayers[i];
 	// 	if (player->isPlaying())
 	// 	{
@@ -55,7 +57,7 @@ void ofApp::draw(){
 	// 	}		
 	// 	if(player->isPlaying()&&false)
 	// 		player->draw(0,0,640,480);
-	// }
+	 }
 	stringstream fpsInfo;
 	fpsInfo <<"\n" <<  "APP FPS: "+ ofToString(ofGetFrameRate());
 	ofDrawBitmapStringHighlight(fpsInfo.str(), 60, 20, ofColor::black, ofColor::yellow);
