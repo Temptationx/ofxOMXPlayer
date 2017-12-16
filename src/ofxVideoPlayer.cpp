@@ -14,7 +14,7 @@ public:
         if(!player){
             return;
         }
-        while(!player->setup(setting)){
+        while(!player->setup(settings)){
             this_thread::sleep_for(chrono::seconds(2));
 		}
     }
@@ -32,7 +32,7 @@ ofxVideoPlayer::ofxVideoPlayer()
     d = new ofxVideoPlayerPrivate(this);
 }
 
-ofxOMXPlayer::~ofxVideoPlayer()
+ofxVideoPlayer::~ofxVideoPlayer()
 {
     if(d){
         delete d;
