@@ -22,7 +22,7 @@ void ofApp::setup()
 		auto height = 480;	
 		
 		
-		ofxOMXPlayer* player = new ofxVideoPlayer();
+		auto* player = new ofxVideoPlayer();
 		player->setSize(width, height);
 		player->setPosition(x, y);
 		player->setSource(videoPath);
@@ -56,8 +56,8 @@ void ofApp::draw(){
 	// 	if(player->isPlaying()&&false)
 	// 		player->draw(0,0,640,480);
 	// }
-	// stringstream fpsInfo;
-	// fpsInfo <<"\n" <<  "APP FPS: "+ ofToString(ofGetFrameRate());
+	stringstream fpsInfo;
+	fpsInfo <<"\n" <<  "APP FPS: "+ ofToString(ofGetFrameRate());
 	ofDrawBitmapStringHighlight(fpsInfo.str(), 60, 20, ofColor::black, ofColor::yellow);
 }
 
