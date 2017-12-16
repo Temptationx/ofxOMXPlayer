@@ -80,6 +80,7 @@ void ofxVideoPlayer::play()
         settings.directDisplayOptions.drawRectangle.height = height;
     }
     if(!d->omxPlayer->setup(settings)){
-        d->onVideoEnd(ofxOMXPlayerListenerEventData(nullptr));
+        auto e = ofxOMXPlayerListenerEventData(nullptr);
+        d->onVideoEnd(e);
     }
 }
