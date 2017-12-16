@@ -40,24 +40,24 @@ ofxVideoPlayer::~ofxVideoPlayer()
     }
 }
 
-void ofxOMXPlayer::setPosition(int x, int y)
+void ofxVideoPlayer::setPosition(int x, int y)
 {
     this->x = x;
     this->y = y;
 }
 
-void ofxOMXPlayer::setSize(int w, int h)
+void ofxVideoPlayer::setSize(int w, int h)
 {
     width = w;
     height = h;
 }
 
-void ofxOMXPlayer::setSource(std::string _source)
+void ofxVideoPlayer::setSource(std::string _source)
 {
     source = _source;
 }
 
-void ofxOMXPlayer::play()
+void ofxVideoPlayer::play()
 {
     ofxOMXPlayerSettings settings;
     settings.videoPath = files[i];
