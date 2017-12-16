@@ -1,9 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxOMXPlayer.h"
+#include "ofxVideoPlayer.h"
 
-class ofApp : public ofBaseApp, public ofxOMXPlayerListener{
+class ofApp : public ofBaseApp{
 
 	public:
 
@@ -11,10 +11,8 @@ class ofApp : public ofBaseApp, public ofxOMXPlayerListener{
 		void update();
 		void draw();
 		void keyPressed(int key);
-	    virtual void onVideoEnd(ofxOMXPlayerListenerEventData& e);
-        virtual void onVideoLoop(ofxOMXPlayerListenerEventData& e);
 	
-	map<int, ofxOMXPlayer*> omxPlayers; 
+	map<int, ofxVideoPlayer*> omxPlayers; 
 
 };
 
