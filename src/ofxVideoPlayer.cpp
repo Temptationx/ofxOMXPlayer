@@ -1,30 +1,50 @@
 #include "ofxVideoPlayer.h"
+#ifndef WIN32
 #include "ofxOMXPlayer.h"
+#endif
 #include <thread>
 #include <chrono>
+#ifndef WIN32
 class ofxVideoPlayerPrivate: public ofxOMXPlayerListener
+#else
+class ofxVideoPlayerPrivate
+#endif
 {
 public:
     ofxVideoPlayerPrivate(ofxVideoPlayer *_p){
         p = _p;
-        omxPlayer = new ofxOMXPlayer();
+#ifndef WIN32
+		player = new ofxOMXPlayer();
+#else
+
+#endif
     }
-    static void reloadMovie(ofxOMXPlayer *player, ofxOMXPlayerSettings settings)
+    static void reloadMovie(ofxVideoPlayerPrivate *d)
     {
-        if(!player){
+        if(!d || !d->player){
             return;
         }
-        while(!player->setup(settings)){
+#ifndef WIN32
+        while(!d->player->setup(d->player->getSettings()))
+#else
+		while(false)
+#endif
+		{
             this_thread::sleep_for(chrono::seconds(2));
 		}
     }
-    virtual void onVideoEnd(ofxOMXPlayerListenerEventData& e){
-        thread loadNewMovie(ofxVideoPlayerPrivate::reloadMovie, omxPlayer, omxPlayer->getSettings());
-        loadNewMovie.detach();
-    }
-    virtual void onVideoLoop(ofxOMXPlayerListenerEventData& e){}
+
     ofxVideoPlayer *p = nullptr;
-    ofxOMXPlayer *omxPlayer = nullptr;
+#ifndef WIN32
+	virtual void onVideoEnd(ofxOMXPlayerListenerEventData& e) {
+		thread loadNewMovie(ofxVideoPlayerPrivate::reloadMovie, omxPlayer, omxPlayer->getSettings());
+		loadNewMovie.detach();
+	}
+	virtual void onVideoLoop(ofxOMXPlayerListenerEventData& e) {}
+    ofxOMXPlayer *player = nullptr;
+#else
+	int *player = nullptr;
+#endif
 };
 
 ofxVideoPlayer::ofxVideoPlayer()
@@ -59,23 +79,31 @@ void ofxVideoPlayer::setSource(std::string _source)
 
 void ofxVideoPlayer::drawInfoText()
 {
-    	// 	if (player->isPlaying())
-	// 	{
-	// 		ofPushMatrix();
-	// 			ofTranslate(player->drawRectangle->x, 0, 0);
-	// 			ofDrawBitmapStringHighlight(player->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
-	// 		ofPopMatrix();
-    // 	}		
+#ifndef WIN32
     if(d->omxPlayer->isPlaying()){
         ofPushMatrix();
         ofTranslate(d->omxPlayer->drawRectangle->x, 0, 0);
         ofDrawBitmapStringHighlight(d->omxPlayer->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
         ofPopMatrix();
     }
+#else
+
+#endif
+}
+
+bool ofxVideoPlayer::isPlaying()
+{
+#ifndef WIN32
+	return d->omxPlayer->isPlaying();
+#else
+	return false;
+#endif // !WIN32
+
 }
 
 void ofxVideoPlayer::play()
 {
+#ifndef WIN32
     ofxOMXPlayerSettings settings;
     settings.videoPath = source;
     settings.useHDMIForAudio = true;	//default true
@@ -100,4 +128,7 @@ void ofxVideoPlayer::play()
         auto e = ofxOMXPlayerListenerEventData(nullptr);
         d->onVideoEnd(e);
     }
+#else
+
+#endif
 }

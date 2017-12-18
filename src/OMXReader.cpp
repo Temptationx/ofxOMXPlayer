@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "OMXReader.h"
 #include "OMXClock.h"
 #include "XMemUtils.h"
@@ -1290,3 +1291,4 @@ bool OMXReader::canSeek()
     
     return false;
 }
+#endif

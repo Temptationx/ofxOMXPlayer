@@ -1,4 +1,4 @@
-
+#ifndef WIN32
 #include "BaseVideoPlayer.h"
 
 unsigned count_bits(int32_t value)
@@ -308,3 +308,5 @@ bool BaseVideoPlayer::EOS()
 	return atEndofStream;
 }
 
+
+#endif

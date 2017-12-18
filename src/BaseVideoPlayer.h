@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 #include "ofMain.h"
 #include "ofxOMXPlayerSettings.h"
@@ -79,3 +80,4 @@ public:
     ofxOMXPlayerSettings settings;
 
 };
+#endif

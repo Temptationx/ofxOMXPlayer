@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include <sys/stat.h>
@@ -60,3 +61,4 @@ namespace XFILE
 	};
 
 };
+#endif

@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "ofMain.h"
@@ -56,3 +57,5 @@ class StreamInfo
 
 		string toString();
 };
+
+#endif

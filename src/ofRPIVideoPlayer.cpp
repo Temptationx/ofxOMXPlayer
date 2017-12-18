@@ -1,3 +1,4 @@
+#ifndef WIN32
 //
 //  ofRPIVideoPlayer.cpp
 //  JVCRPI2_LOCAL
@@ -251,3 +252,5 @@ void ofRPIVideoPlayer::setLoopState(ofLoopType requestedState)
     }
     
 }
+
+#endif

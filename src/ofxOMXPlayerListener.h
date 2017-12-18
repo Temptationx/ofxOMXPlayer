@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "ofMain.h"
@@ -22,3 +23,5 @@ class ofxOMXPlayerListener
 
 };
 
+
+#endif

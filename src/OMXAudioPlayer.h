@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 #include "ofMain.h"
 
@@ -103,3 +104,5 @@ class OMXAudioPlayer : public OMXThread
             return hasErrors;
 		};
 };
+
+#endif

@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "ofMain.h"
@@ -184,3 +185,5 @@ public:
     bool isStream;
 };
 
+
+#endif

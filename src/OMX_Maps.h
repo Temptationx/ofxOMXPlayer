@@ -1,3 +1,4 @@
+#ifndef WIN32
 #ifndef OMX_Maps_h
 #define OMX_Maps_h
 
@@ -1461,5 +1462,7 @@ OMX_ERRORTYPE FlushOMXComponent(OMX_HANDLETYPE handle, int port)
     OMX_TRACE(error);
     return error;
 }
+
+#endif
 
 #endif

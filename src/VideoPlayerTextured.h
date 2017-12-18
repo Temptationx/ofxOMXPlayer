@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "BaseVideoPlayer.h"
@@ -20,3 +21,4 @@ public:
     EGLImageKHR eglImage;
 };
 
+#endif

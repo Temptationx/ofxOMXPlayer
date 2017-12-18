@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #define _LINUX 1
@@ -209,3 +210,5 @@ namespace MathUtils
 #endif
 } // namespace MathUtils
 
+
+#endif

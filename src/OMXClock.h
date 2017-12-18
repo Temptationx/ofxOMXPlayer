@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "Component.h"
@@ -60,3 +61,4 @@ public:
     int64_t getAbsoluteClock();
     void sleep(unsigned int dwMilliSeconds);
 };
+#endif

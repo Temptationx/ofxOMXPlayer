@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "ofMain.h"
@@ -35,3 +36,4 @@ private:
     
     
 };
+#endif

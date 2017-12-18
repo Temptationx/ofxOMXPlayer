@@ -18,7 +18,7 @@
  *  http://www.gnu.org/copyleft/gpl.html
  *
  */
-
+#ifndef WIN32
 #include "AudioCodecOMX.h"
 #include "XMemUtils.h"
 
@@ -484,3 +484,5 @@ enum PCMChannels* AudioCodecOMX::GetChannelMap()
 
 	return m_channelMap;
 }
+
+#endif

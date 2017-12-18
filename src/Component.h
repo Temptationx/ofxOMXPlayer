@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "OMX_Maps.h"
@@ -148,3 +149,4 @@ private:
     int frameOffset;
     
 };
+#endif

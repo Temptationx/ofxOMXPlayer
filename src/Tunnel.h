@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "Component.h"
@@ -27,3 +28,4 @@ private:
     
 
 };
+#endif

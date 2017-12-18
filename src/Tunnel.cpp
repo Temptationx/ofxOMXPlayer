@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "Tunnel.h"
 
 #pragma mark Tunnel
@@ -257,3 +258,5 @@ OMX_ERRORTYPE Tunnel::Establish(bool portSettingsChanged)
     
     return error;
 }
+
+#endif

@@ -1,6 +1,9 @@
 #pragma once
+#ifndef WIN32
 #include "ofxOMXPlayer.h"
+#endif
 #include "ofBaseTypes.h"
+
 class ofxVideoPlayerPrivate;
 class ofxVideoPlayer
 {
@@ -12,6 +15,7 @@ public:
     void setSource(std::string _source);
     void play();
     void drawInfoText();
+	bool isPlaying();
 private:
     ofxVideoPlayerPrivate *d = nullptr;
     friend ofxVideoPlayerPrivate;

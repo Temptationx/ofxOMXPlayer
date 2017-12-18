@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include "ofMain.h"
@@ -182,3 +183,5 @@ class OMXAudioDecoder
 		Tunnel     decoderTunnel;
 		CPCMRemap remapObject;
 };
+
+#endif

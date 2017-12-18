@@ -1,3 +1,4 @@
+#ifndef WIN32
 // SingleLock.h: interface for the SingleLock class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -72,3 +73,5 @@ protected:
 };
 
 
+
+#endif

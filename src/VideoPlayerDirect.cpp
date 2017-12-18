@@ -18,7 +18,7 @@
  *  http://www.gnu.org/copyleft/gpl.html
  *
  */
-
+#ifndef WIN32
 
 
 #include "VideoPlayerDirect.h"
@@ -146,3 +146,4 @@ void VideoPlayerDirect::close()
 	speed       = DVD_PLAYSPEED_NORMAL;
 }
 
+#endif

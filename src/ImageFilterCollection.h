@@ -1,3 +1,4 @@
+#ifndef WIN32
 /*
  *  ImageFilterCollection.h
  *  Created by jason van cleave on 8/7/13.
@@ -68,3 +69,4 @@ public:
 	
 
 };
+#endif

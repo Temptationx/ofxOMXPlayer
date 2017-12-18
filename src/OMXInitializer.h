@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 #include <IL/OMX_Core.h>
@@ -40,3 +41,5 @@ private:
     OMXInitializer(OMXInitializer const&);
     void operator=(OMXInitializer const&);
 };
+
+#endif

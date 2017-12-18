@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "Component.h"
 
 
@@ -1394,3 +1395,5 @@ OMX_ERRORTYPE Component::FillBufferDoneCallback(OMX_HANDLETYPE hComponent,
 
 
 
+
+#endif

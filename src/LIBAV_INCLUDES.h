@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 extern "C" 
@@ -55,3 +56,4 @@ extern "C"
 #endif
 
 typedef int64_t offset_t;
+#endif

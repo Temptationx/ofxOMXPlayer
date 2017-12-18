@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "StreamInfo.h"
 
 StreamInfo::StreamInfo()
@@ -78,3 +79,4 @@ string StreamInfo::toString()
 
 	return info.str();
 }
+#endif

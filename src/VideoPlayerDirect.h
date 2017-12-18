@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 
 
@@ -18,3 +19,4 @@ public:
     
     bool doUpdate;
 };
+#endif

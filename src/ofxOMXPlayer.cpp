@@ -1,3 +1,4 @@
+#ifndef WIN32
 /*
  *  ofxOMXPlayer.cpp
  *
@@ -964,3 +965,4 @@ void ofxOMXPlayer::addExitHandler()
     }
     ofAddListener(ofEvents().update, this, &ofxOMXPlayer::onUpdateDuringExit);
 }
+#endif

@@ -20,7 +20,7 @@
  *  http://www.gnu.org/copyleft/gpl.html
  *
  */
-
+#ifndef WIN32
 #include "ofMain.h"
 
 #include "LIBAV_INCLUDES.h"
@@ -79,3 +79,5 @@ protected:
     
     void BuildChannelMap();
 };
+
+#endif

@@ -1,3 +1,4 @@
+#ifndef WIN32
 //
 //  FilterManager.h
 //
@@ -58,3 +59,4 @@ public:
     
     
 };
+#endif

@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "ofxOMXPlayerEngine.h"
 #include <time.h>
 #include <stdio.h>
@@ -775,3 +776,5 @@ ofxOMXPlayerEngine::~ofxOMXPlayerEngine()
 }
 
 
+
+#endif

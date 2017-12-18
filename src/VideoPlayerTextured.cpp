@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "VideoPlayerTextured.h"
 
 #include <stdio.h>
@@ -135,3 +136,5 @@ void VideoPlayerTextured::close()
 	speed       = DVD_PLAYSPEED_NORMAL;
 
 }
+
+#endif

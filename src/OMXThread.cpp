@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "OMXThread.h"
 
 
@@ -86,3 +87,5 @@ void OMXThread::unlock()
 	pthread_mutex_unlock(&m_lock);
 }
 
+
+#endif

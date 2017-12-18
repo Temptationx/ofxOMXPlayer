@@ -1,3 +1,4 @@
+#ifndef WIN32
 #pragma once
 #include "ofMain.h"
 
@@ -25,3 +26,5 @@ class OMXThread
 		void lock();
 		void unlock();
 };
+
+#endif

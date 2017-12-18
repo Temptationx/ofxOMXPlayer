@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "BaseVideoDecoder.h"
 
 
@@ -426,3 +427,5 @@ void BaseVideoDecoder::processCodec(StreamInfo& hints)
 			break;
 	}
 }
+
+#endif

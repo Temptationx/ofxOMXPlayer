@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "OMXClock.h"
 
 OMXClock::OMXClock()
@@ -448,3 +449,5 @@ int64_t OMXClock::getAbsoluteClock()
 {
     return CurrentHostCounter();
 }
+
+#endif

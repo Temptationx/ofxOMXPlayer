@@ -1,3 +1,4 @@
+#ifndef WIN32
 /*
 * XBMC Media Center
 * Copyright (c) 2002 d7o3g4q and RUNTiME
@@ -1017,3 +1018,5 @@ void OMXAudioDecoder::printPCM(OMX_AUDIO_PARAM_PCMMODETYPE *pcm)
 }
 
 
+
+#endif

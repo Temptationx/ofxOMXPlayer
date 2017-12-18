@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "VideoDecoderTextured.h"
 
 
@@ -368,3 +369,4 @@ bool VideoDecoderTextured::open(StreamInfo& streamInfo, OMXClock* clock, ofxOMXP
 	return true;
 }
 
+#endif

@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -50,3 +51,4 @@ void _aligned_free(void *p) {
 }
 
 
+#endif

@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include "VideoDecoderDirect.h"
 
 
@@ -336,10 +337,4 @@ void VideoDecoderDirect::resetFrameCounter()
 {
 	frameOffset = frameCounter;
 }
-
-
-
-
-
-
-
+#endif

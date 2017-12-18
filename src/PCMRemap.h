@@ -1,3 +1,4 @@
+#ifndef WIN32
 #ifndef __PCM_REMAP__H__
 #define __PCM_REMAP__H__
 
@@ -142,5 +143,7 @@ public:
     int  FramesToInBytes (int frames);
     float getCurrentAttenuation() { return m_attenuationMin; }
 };
+
+#endif
 
 #endif

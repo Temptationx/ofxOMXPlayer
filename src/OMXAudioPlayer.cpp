@@ -1,3 +1,4 @@
+#ifndef WIN32
 /*
  *      Copyright (C) 2005-2008 Team XBMC
  *      http://www.xbmc.org
@@ -523,3 +524,5 @@ void OMXAudioPlayer::setSpeed(int speed_)
     speed = speed_;
 }
 
+
+#endif

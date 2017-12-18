@@ -1,3 +1,4 @@
+#ifndef WIN32
 /*
  *      Copyright (C) 2005-2010 Team XBMC
  *      http://www.xbmc.org
@@ -812,3 +813,5 @@ std::string CPCMRemap::PCMLayoutStr(enum PCMLayout ename)
     return namestr;
 }
 
+
+#endif

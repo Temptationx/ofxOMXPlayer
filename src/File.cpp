@@ -1,3 +1,4 @@
+#ifndef WIN32
 #include <iostream>
 #include <stdio.h>
 
@@ -175,3 +176,5 @@ bool File::getIsEOF()
 
 	return feof(fileObject) != 0;
 }
+
+#endif
