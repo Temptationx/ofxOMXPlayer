@@ -37,7 +37,7 @@ public:
     ofxVideoPlayer *p = nullptr;
 #ifndef WIN32
 	virtual void onVideoEnd(ofxOMXPlayerListenerEventData& e) {
-		thread loadNewMovie(ofxVideoPlayerPrivate::reloadMovie, omxPlayer, omxPlayer->getSettings());
+		thread loadNewMovie(ofxVideoPlayerPrivate::reloadMovie, player, player->getSettings());
 		loadNewMovie.detach();
 	}
 	virtual void onVideoLoop(ofxOMXPlayerListenerEventData& e) {}
@@ -82,8 +82,8 @@ void ofxVideoPlayer::drawInfoText()
 #ifndef WIN32
     if(d->omxPlayer->isPlaying()){
         ofPushMatrix();
-        ofTranslate(d->omxPlayer->drawRectangle->x, 0, 0);
-        ofDrawBitmapStringHighlight(d->omxPlayer->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
+        ofTranslate(d->player->drawRectangle->x, 0, 0);
+        ofDrawBitmapStringHighlight(d->player->getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
         ofPopMatrix();
     }
 #else
@@ -94,7 +94,7 @@ void ofxVideoPlayer::drawInfoText()
 bool ofxVideoPlayer::isPlaying()
 {
 #ifndef WIN32
-	return d->omxPlayer->isPlaying();
+	return d->player->isPlaying();
 #else
 	return false;
 #endif // !WIN32
@@ -124,7 +124,7 @@ void ofxVideoPlayer::play()
         settings.directDisplayOptions.drawRectangle.width = width;
         settings.directDisplayOptions.drawRectangle.height = height;
     }
-    if(!d->omxPlayer->setup(settings)){
+    if(!d->player->setup(settings)){
         auto e = ofxOMXPlayerListenerEventData(nullptr);
         d->onVideoEnd(e);
     }
