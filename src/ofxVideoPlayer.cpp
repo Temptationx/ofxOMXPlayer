@@ -125,6 +125,7 @@ void ofxVideoPlayer::play()
         settings.directDisplayOptions.drawRectangle.width = width;
         settings.directDisplayOptions.drawRectangle.height = height;
 		settings.directDisplayOptions.doForceFill = true;
+		settings.directDisplayOptions.noAspectRatio = true;
     }
     if(!d->player->setup(settings)){
         auto e = ofxOMXPlayerListenerEventData(nullptr);
