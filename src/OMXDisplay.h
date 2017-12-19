@@ -22,7 +22,6 @@ public:
     int previousRotationDegrees;
     OMXDisplay()
     {
-
         isReady = false;
         previousRotationDegrees = 0;
         OMX_INIT_STRUCTURE(omxConfig);
@@ -43,8 +42,6 @@ public:
     
     OMX_ERRORTYPE setup(Component* renderComponent_, StreamInfo& streamInfo_, ofxOMXPlayerSettings& playerSettings_)
     {
-        
-        
         renderComponent = renderComponent_;
         streamInfo = streamInfo_;
         playerSettings = playerSettings_;
@@ -53,25 +50,17 @@ public:
         previousMirror = options.doMirror;        
         if(options.drawRectangle.getArea()==0)
         {
-
            options.drawRectangle.set(0, 0, streamInfo.width, streamInfo.height); 
-		}
-		else {
-			printf("omxdisplay setup: playerSettings.directDisplayOptions has data\n");
 		}
 
         
         omxConfig.nPortIndex = renderComponent->getInputPort();
-        
-        
-    
         
         isReady = true;
         
         OMX_ERRORTYPE error = OMX_ErrorNone;
         if (options.drawRectangle.getWidth()>0)
         {
-            
             error = applyConfig(); 
             OMX_TRACE(error);
             
@@ -109,7 +98,7 @@ public:
         OMX_ERRORTYPE error =applyConfig();
         OMX_TRACE(error); 
 
-//#ifdef DEBUG_VIDEO_DISPLAY
+#ifdef DEBUG_VIDEO_DISPLAY
         stringstream info;
         info << "fullscreen: " << omxConfig.fullscreen << endl; 
         info << "noaspect: " << omxConfig.noaspect << endl;
@@ -141,12 +130,10 @@ public:
         info << "wfc_context_width: " << omxConfig.wfc_context_width << endl;
         info << "wfc_context_height: " << omxConfig.wfc_context_height << endl;
         
-    
-		cout << info.str() << endl;
         ofLogVerbose() << info.str();
         ofLogVerbose() << "options.drawRectangle: " << options.drawRectangle;
         ofLogVerbose() << "options.drawRectangle.getArea(): " << options.drawRectangle.getArea();
-//#endif
+#endif //DEBUG_VIDEO_DISPLAY
         
     }
     
@@ -171,7 +158,6 @@ public:
         omxConfig.alpha  = options.alpha;
         omxConfig.pixel_x  = options.pixelAspectX;
         omxConfig.pixel_y  = options.pixelAspectY;
-		cout << "doForceFill: " << options.doForceFill << endl;
         if(options.doForceFill)
         {
             omxConfig.mode  = OMX_DISPLAY_MODE_FILL;  
