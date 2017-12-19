@@ -53,8 +53,12 @@ public:
         previousMirror = options.doMirror;        
         if(options.drawRectangle.getArea()==0)
         {
+
            options.drawRectangle.set(0, 0, streamInfo.width, streamInfo.height); 
-        }
+		}
+		else {
+			printf("omxdisplay setup: playerSettings.directDisplayOptions has data\n");
+		}
 
         
         omxConfig.nPortIndex = renderComponent->getInputPort();

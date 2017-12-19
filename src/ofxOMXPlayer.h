@@ -13,7 +13,6 @@ public:
     ofxOMXPlayer();
     ~ofxOMXPlayer();
     bool setup(ofxOMXPlayerSettings settings);
-    void setupAsync(ofxOMXPlayerSettings settings);
     ofxOMXPlayerSettings getSettings();
     void        toggleMode();
     void        loadMovie(string videoPath);
