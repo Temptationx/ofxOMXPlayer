@@ -19,6 +19,7 @@ public:
 
 #endif
     }
+	virtual ~ofxVideoPlayerPrivate(){}
     static void reloadMovie(ofxVideoPlayerPrivate *d)
     {
         if(!d || !d->player){

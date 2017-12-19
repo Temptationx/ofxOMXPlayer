@@ -38,7 +38,7 @@ bool VideoPlayerDirect::open(StreamInfo& hints, OMXClock* av_clock, ofxOMXPlayer
 {
 	
 	stringstream info;
-	info << "videoWidth: " settings_.videoWidth << ", videoHeight" << settings_.videoHeight << "\n";
+	info << "videoWidth: " << settings_.videoWidth << ", videoHeight" << settings_.videoHeight << "\n";
 	info << "directDisplayOptions.drawRectangle.width" << settings.directDisplayOptions.drawRectangle.width << "directDisplayOptions.drawRectangle.height" << settings.directDisplayOptions.drawRectangle.height << "\n";
 	info << "directDisplayOptions.cropRectangle.width" << settings.directDisplayOptions.cropRectangle.width << "directDisplayOptions.cropRectangle.height" << settings.directDisplayOptions.cropRectangle.height << "\n";
 	cout << info.str();
