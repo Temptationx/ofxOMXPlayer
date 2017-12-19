@@ -142,7 +142,7 @@ public:
         info << "wfc_context_height: " << omxConfig.wfc_context_height << endl;
         
     
-        
+		cout << info.str() << endl;
         ofLogVerbose() << info.str();
         ofLogVerbose() << "options.drawRectangle: " << options.drawRectangle;
         ofLogVerbose() << "options.drawRectangle.getArea(): " << options.drawRectangle.getArea();
@@ -171,6 +171,7 @@ public:
         omxConfig.alpha  = options.alpha;
         omxConfig.pixel_x  = options.pixelAspectX;
         omxConfig.pixel_y  = options.pixelAspectY;
+		cout << "doForceFill: " << options.doForceFill << endl;
         if(options.doForceFill)
         {
             omxConfig.mode  = OMX_DISPLAY_MODE_FILL;  
