@@ -109,7 +109,7 @@ public:
         OMX_ERRORTYPE error =applyConfig();
         OMX_TRACE(error); 
 
-#ifdef DEBUG_VIDEO_DISPLAY
+//#ifdef DEBUG_VIDEO_DISPLAY
         stringstream info;
         info << "fullscreen: " << omxConfig.fullscreen << endl; 
         info << "noaspect: " << omxConfig.noaspect << endl;
@@ -146,7 +146,7 @@ public:
         ofLogVerbose() << info.str();
         ofLogVerbose() << "options.drawRectangle: " << options.drawRectangle;
         ofLogVerbose() << "options.drawRectangle.getArea(): " << options.drawRectangle.getArea();
-#endif
+//#endif
         
     }
     
