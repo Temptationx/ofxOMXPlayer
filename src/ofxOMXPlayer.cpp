@@ -231,8 +231,8 @@ bool ofxOMXPlayer::openEngine(int startTimeInSeconds) //default 0
         drawRectangle = &directDisplay->options.drawRectangle;
 		stringstream info;
 		info << "directDecoder -> getOMXDisplay()->rectangle\n";
-		info << "directDecoder.drawRectangle.width: " <<drawRectangle.width << ", directDecoder.drawRectangle.height: " << drawRectangle.height << "\n";
-		info << "directDecoder.cropRectangle.width: " << cropRectangle.width << ", directDecoder.cropRectangle.height: " << cropRectangle.height << "\n";
+		info << "directDecoder.drawRectangle.width: " <<drawRectangle->width << ", directDecoder.drawRectangle.height: " << drawRectangle->height << "\n";
+		info << "directDecoder.cropRectangle.width: " << cropRectangle->width << ", directDecoder.cropRectangle.height: " << cropRectangle->height << "\n";
 		cout << info.str() << endl;
     }
     if(settings.enableFilters)
