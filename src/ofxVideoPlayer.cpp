@@ -78,6 +78,11 @@ void ofxVideoPlayer::setSource(std::string _source)
     source = _source;
 }
 
+void ofxVideoPlayer::setUseTexture(bool use)
+{
+	useTexture = use;
+}
+
 void ofxVideoPlayer::drawInfoText()
 {
 #ifndef WIN32
@@ -102,35 +107,51 @@ bool ofxVideoPlayer::isPlaying()
 
 }
 
+void ofxVideoPlayer::draw()
+{
+#ifndef TARGET_WIN32
+	if (d->player->isTextureEnabled()) {
+		d->player->draw(x, y, width, height);
+	}
+#endif
+}
+
 void ofxVideoPlayer::play()
 {
+	thread playMe(&ofxVideoPlayer::playAsync, this);
+	playMe.detach();
+
+}
+
+void ofxVideoPlayer::playAsync()
+{
 #ifndef WIN32
-    ofxOMXPlayerSettings settings;
-    settings.videoPath = source;
-    settings.useHDMIForAudio = true;	//default true
-    settings.enableLooping = false;		//default true
-    settings.enableAudio = false;		//default true, save resources by disabling
-    settings.enableTexture =false;		//default true
-    settings.listener = d;
-    if (!settings.enableTexture)
-    {
-        /*
-            We have the option to pass in a rectangle
-            to be used for a non-textured player to use (as opposed to the default full screen)
-            */
-        
-        settings.directDisplayOptions.drawRectangle.x = x;
-        settings.directDisplayOptions.drawRectangle.y = y;
-        
-        settings.directDisplayOptions.drawRectangle.width = width;
-        settings.directDisplayOptions.drawRectangle.height = height;
+	ofxOMXPlayerSettings settings;
+	settings.videoPath = source;
+	settings.useHDMIForAudio = true;	//default true
+	settings.enableLooping = false;		//default true
+	settings.enableAudio = false;		//default true, save resources by disabling
+	settings.enableTexture = useTexture;		//default true
+	settings.listener = d;
+	if (!settings.enableTexture)
+	{
+		/*
+		We have the option to pass in a rectangle
+		to be used for a non-textured player to use (as opposed to the default full screen)
+		*/
+
+		settings.directDisplayOptions.drawRectangle.x = x;
+		settings.directDisplayOptions.drawRectangle.y = y;
+
+		settings.directDisplayOptions.drawRectangle.width = width;
+		settings.directDisplayOptions.drawRectangle.height = height;
 		settings.directDisplayOptions.doForceFill = true;
 		settings.directDisplayOptions.noAspectRatio = true;
-    }
-    if(!d->player->setup(settings)){
-        auto e = ofxOMXPlayerListenerEventData(nullptr);
-        d->onVideoEnd(e);
-    }
+	}
+	if (!d->player->setup(settings)) {
+		auto e = ofxOMXPlayerListenerEventData(nullptr);
+		d->onVideoEnd(e);
+	}
 #else
 
 #endif
