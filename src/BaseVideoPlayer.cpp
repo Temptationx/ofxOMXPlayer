@@ -251,11 +251,11 @@ void BaseVideoPlayer::process()
 		else
 		{
 			time_t t = time(NULL);
-			printf("Debug:: %s 4. Decode\n", ctime(&t));
+			//printf("Debug:: %s 4. Decode\n", ctime(&t));
 			if(omxPacket && decode(omxPacket))
 			{
 				time_t t = time(NULL);
-				printf("Debug:: %s 4. Decode Success\n", ctime(&t));
+//				printf("Debug:: %s 4. Decode Success\n", ctime(&t));
 				OMXReader::freePacket(omxPacket);
 				omxPacket = NULL;
 			}else{
