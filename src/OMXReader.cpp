@@ -432,7 +432,7 @@ OMXPacket* OMXReader::Read()
     
     result = av_read_frame(avFormatContext, &pkt);
     time_t t = time(NULL);
-    printf("Debug:: %s 3. Reading Packet Done, result %d\n", ctime(&t), result);
+//    printf("Debug:: %s 3. Reading Packet Done, result %d\n", ctime(&t), result);
 
     if (result < 0)
     {
