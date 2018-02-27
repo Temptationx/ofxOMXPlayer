@@ -22,10 +22,14 @@ public:
 	virtual ~ofxVideoPlayerPrivate(){}
     static void reloadMovie(ofxVideoPlayerPrivate *d)
     {
-        if(d){
-            delete d;
+    	if(!d){
+    		return;
+    	}
+
+        if(d->player){
+            delete d->player;
         }
-        d = new ofxOMXPlayer();
+        d->player = new ofxOMXPlayer();
 
 #ifndef WIN32
         while(!d->player->setup(d->player->getSettings()))
