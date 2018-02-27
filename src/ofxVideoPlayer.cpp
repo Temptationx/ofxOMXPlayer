@@ -32,7 +32,7 @@ public:
         d->player = new ofxOMXPlayer();
 
 #ifndef WIN32
-        while(!d->player->setup(d->player->getSettings()))
+        while(!d->player->setup(d->settings))
 #else
 		while(false)
 #endif
@@ -49,6 +49,8 @@ public:
 	}
 	virtual void onVideoLoop(ofxOMXPlayerListenerEventData& e) {}
     ofxOMXPlayer *player = nullptr;
+    ofxOMXPlayerSettings settings;
+
 #else
 	int *player = nullptr;
 #endif
@@ -154,6 +156,7 @@ void ofxVideoPlayer::playAsync()
 		settings.directDisplayOptions.doForceFill = true;
 		settings.directDisplayOptions.noAspectRatio = true;
 	}
+	d->settings = settings;
 	if (!d->player->setup(settings)) {
 		auto e = ofxOMXPlayerListenerEventData(nullptr);
 		d->onVideoEnd(e);
