@@ -22,6 +22,7 @@ public:
 	virtual ~ofxVideoPlayerPrivate(){}
     static void reloadMovie(ofxVideoPlayerPrivate *d)
     {
+#ifndef WIN32
     	if(!d){
     		return;
     	}
@@ -31,14 +32,16 @@ public:
         }
         d->player = new ofxOMXPlayer();
 
-#ifndef WIN32
+
         while(!d->player->setup(d->settings))
-#else
+
 		while(false)
-#endif
+
 		{
             this_thread::sleep_for(chrono::seconds(2));
 		}
+#else
+#endif
     }
 
     ofxVideoPlayer *p = nullptr;
